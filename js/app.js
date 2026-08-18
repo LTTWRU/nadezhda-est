@@ -408,6 +408,23 @@
     toggleBar();
   }
 
+  /* ---------- 18. Мобильные свёртки ----------
+     На большом экране списки открыты, на телефоне — свёрнуты:
+     36 экранов прокрутки никто не осилит. */
+  if (window.matchMedia('(max-width: 720px)').matches) {
+    $$('.disc[open]').forEach(function (d, i) { if (i > 0) d.open = false; });
+  }
+
+  /* ---------- 19. Нижняя панель уступает форме ---------- */
+  var zayavka = $('#zayavka');
+  if (zayavka && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        document.body.classList.toggle('at-form', en.isIntersecting);
+      });
+    }, { threshold: 0.15 }).observe(zayavka);
+  }
+
   /* ---------- 13. Год в подвале ---------- */
   var y = $('#year');
   if (y) y.textContent = new Date().getFullYear();
