@@ -1092,8 +1092,9 @@ html[data-theme="dark"] .shot-ph span{color:#9DBBFF}
 .team{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem)}
 .person{display:flex;gap:clamp(1rem,2vw,1.4rem);align-items:flex-start}
 .person-photo{
-  width:104px;height:104px;flex:none;border-radius:var(--r-lg);overflow:hidden;
+  width:148px;height:148px;flex:none;border-radius:var(--r-lg);overflow:hidden;
   background:var(--blue-mist);border:1.5px solid var(--hair);position:relative;
+  box-shadow:var(--sh-1);
 }
 .person-photo img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
 .person-photo .ph{
@@ -1115,8 +1116,8 @@ html[data-theme="dark"] .shot-ph span{color:#9DBBFF}
   .team{grid-template-columns:1fr}
 }
 @media (max-width:520px){
-  .person{flex-direction:column}
-  .person-photo{width:88px;height:88px}
+  .person{flex-direction:column;gap:.9rem}
+  .person-photo{width:100%;height:auto;aspect-ratio:4/3;border-radius:var(--r-lg)}
 }
 
 
@@ -1376,7 +1377,7 @@ html[data-size="xl"] .burger{display:grid}
   .reviews{gap:.6rem}
   .review p{font-size:.99rem}
   .person{gap:1rem}
-  .person-photo{width:76px;height:76px;border-radius:16px}
+  .person-photo{width:124px;height:124px;border-radius:18px}
   .person-name{font-size:1.05rem}
 
   /* --- Вопросы --- */
