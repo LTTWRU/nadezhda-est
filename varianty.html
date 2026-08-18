@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Варианты первого экрана — «Надежда Есть»</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="img/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=6">
+<style>
+/* ---- служебное оформление страницы сравнения (на сайт не попадёт) ---- */
+.demo-head{padding:clamp(2rem,5vw,3.5rem) 0 1rem}
+.demo-note{max-width:62ch}
+.variant{border-top:1px solid var(--hair);margin-top:clamp(2rem,5vw,4rem)}
+.variant-bar{
+  display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;
+  padding:1.4rem 0 .4rem;
+}
+.variant-num{
+  width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;
+  background:var(--blue-solid);color:#fff;font-family:var(--display);font-weight:600;font-size:1.2rem;
+}
+.variant-bar h2{font-size:clamp(1.3rem,2.2vw,1.7rem)}
+.variant-why{color:var(--ink-soft);font-size:.98rem;max-width:64ch;margin-top:.35rem}
+.variant-body{padding-bottom:clamp(2rem,4vw,3rem)}
+
+/* ---- В1: пост дежурной смены ---- */
+.v1-panel{
+  border-radius:var(--r-xl);padding:clamp(1.4rem,2.6vw,2rem);color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(165deg,var(--navy-2),var(--navy));box-shadow:var(--sh-3);
+}
+.v1-panel::before{content:"";position:absolute;left:0;top:0;width:100%;height:5px;background:var(--tricolor)}
+.v1-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.v1-label{font-size:.76rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(242,246,255,.6);display:inline-flex;align-items:center;gap:.5rem}
+.v1-label i{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.22);animation:beat 2.6s ease-in-out infinite}
+.v1-clock{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,5vw,3.4rem);line-height:1;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.v1-act{margin:1.1rem 0 1.4rem;padding:1rem 1.15rem;border-radius:var(--r);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.v1-act b{display:block;font-size:1.05rem;margin-bottom:.15rem}
+.v1-act span{font-size:.92rem;color:rgba(242,246,255,.72)}
+.v1-facts{display:grid;gap:.1rem;margin-bottom:1.5rem}
+.v1-facts div{display:flex;justify-content:space-between;gap:1rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem;color:rgba(242,246,255,.78)}
+.v1-facts div:last-child{border-bottom:0}
+.v1-facts b{color:#fff;font-weight:600;text-align:right}
+.v1-panel .btn-primary{background:#fff;color:var(--blue-deep)}
+.v1-panel .btn-primary:hover{background:#EAF0FF;color:var(--navy)}
+
+/* ---- В2: витрина ---- */
+.v2{text-align:center}
+.v2 .kicker{justify-content:center}
+.v2 h1{max-width:19ch;margin-inline:auto}
+.v2 .lede{max-width:62ch;margin-inline:auto;margin-top:1.1rem}
+.v2-cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.9rem}
+.v2-status{
+  display:flex;align-items:center;justify-content:center;gap:1.4rem;flex-wrap:wrap;
+  margin:2.2rem auto 0;padding:.85rem 1.4rem;max-width:760px;
+  border-radius:999px;background:var(--surface);border:1.5px solid var(--hair);box-shadow:var(--sh-1);
+  font-size:.95rem;color:var(--ink-soft);
+}
+.v2-status b{color:var(--ink)}
+.v2-status .sep{width:5px;height:5px;border-radius:50%;background:var(--red);opacity:.6}
+.v2-status i.live{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,.2);display:inline-block;animation:beat 2.6s ease-in-out infinite}
+.v2-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.7rem,1.4vw,1.1rem);margin-top:clamp(1.8rem,3.4vw,2.6rem);text-align:left}
+
+/* ---- В3: быстрый подбор ---- */
+.v3-card{
+  background:var(--surface);border:1.5px solid var(--hair);border-radius:var(--r-xl);
+  padding:clamp(1.4rem,2.6vw,2rem);box-shadow:var(--sh-3);position:relative;overflow:hidden;
+}
+.v3-card::before{content:"";position:absolute;left:0;top:0;width:100%;height:5px;background:var(--tricolor)}
+.v3-card h3{margin-bottom:.35rem}
+.v3-pick{display:grid;gap:.55rem;margin:1.3rem 0}
+.v3-opt{
+  display:flex;align-items:center;gap:.9rem;padding:.95rem 1.1rem;border-radius:var(--r-sm);
+  border:1.5px solid var(--hair);background:var(--surface-2);cursor:pointer;text-align:left;width:100%;
+  transition:border-color .2s,background .2s,transform .2s var(--ease);
+}
+.v3-opt:hover{border-color:var(--blue);background:var(--blue-mist);transform:translateY(-2px)}
+.v3-opt.on{border-color:var(--blue);background:var(--blue-mist)}
+.v3-opt i{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex:none;background:var(--blue-mist);color:var(--blue)}
+.v3-opt.on i{background:var(--blue-solid);color:#fff}
+.v3-opt i svg{width:20px;height:20px}
+.v3-opt b{display:block;font-size:1rem;font-weight:600}
+.v3-opt span{font-size:.86rem;color:var(--ink-faint)}
+.v3-out{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:1.05rem 1.2rem;border-radius:var(--r);background:var(--navy);color:#fff;margin-bottom:1.1rem;
+}
+.v3-out span{font-size:.82rem;color:rgba(242,246,255,.65);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.v3-out b{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,2.6vw,2rem);letter-spacing:-.05em}
+.v3-out b small{font-family:var(--sans);font-size:.9rem;font-weight:500;color:rgba(242,246,255,.7);letter-spacing:0}
+
+/* ---- В4: открытая дверь ---- */
+.v4-strip{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(.6rem,1.2vw,1rem);margin-top:clamp(1.6rem,3vw,2.4rem)}
+.v4-shot{
+  position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3;
+  border:1.5px solid var(--hair);background:var(--surface-2);
+}
+.v4-shot:first-child{aspect-ratio:16/10}
+.v4-shot figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:.85rem 1rem;color:#fff;font-size:.9rem;font-weight:600;
+  background:linear-gradient(180deg,transparent,rgba(8,21,58,.8));z-index:2;
+}
+
+/* ---- В5: ответ на звонок ---- */
+.v5-form{
+  background:var(--surface);border:1.5px solid var(--hair);border-radius:var(--r-xl);
+  padding:clamp(1.4rem,2.6vw,2rem);box-shadow:var(--sh-3);position:relative;overflow:hidden;
+}
+.v5-form::before{content:"";position:absolute;left:0;top:0;width:100%;height:5px;background:var(--tricolor)}
+.v5-form h3{margin-bottom:.3rem}
+.v5-when{
+  display:flex;align-items:center;gap:.6rem;margin:1.1rem 0 1.3rem;padding:.8rem 1rem;
+  border-radius:var(--r-sm);background:var(--blue-mist);font-size:.92rem;color:var(--blue-deep);font-weight:600;
+}
+.v5-when i{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,.2);flex:none}
+html[data-theme="dark"] .v5-when{color:#BDD0FF}
+
+/* ---- В6: маршрут ---- */
+.v6-route{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.7rem,1.4vw,1.1rem);margin-top:clamp(1.8rem,3.2vw,2.6rem);counter-reset:r}
+.v6-step{
+  position:relative;padding:1.15rem 1.2rem;border-radius:var(--r-lg);
+  background:var(--surface);border:1.5px solid var(--hair);
+}
+.v6-step.is-now{border-color:var(--blue);background:var(--blue-mist)}
+.v6-step::before{
+  counter-increment:r;content:counter(r);
+  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;margin-bottom:.8rem;
+  background:var(--blue-solid);color:#fff;font-family:var(--display);font-weight:600;font-size:.98rem;
+}
+.v6-step b{display:block;font-size:1rem;margin-bottom:.2rem}
+.v6-step span{font-size:.88rem;color:var(--ink-soft);line-height:1.4}
+.v6-step em{
+  position:absolute;top:1.15rem;right:1.15rem;font-style:normal;font-size:.76rem;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--blue);
+}
+
+@media (max-width:1080px){
+  .v2-tiles{grid-template-columns:repeat(2,1fr)}
+  .v4-strip{grid-template-columns:1fr 1fr}
+  .v6-route{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .v2-tiles{grid-template-columns:1fr}
+  .v2-status{border-radius:var(--r-lg);gap:.6rem}
+  .v4-strip,.v6-route{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.6C6.6 16.9 3.5 14 3.5 10.4A4.5 4.5 0 0 1 12 7.8a4.5 4.5 0 0 1 8.5 2.6c0 3.6-3.1 6.5-8.5 10.2Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.4V12l3.1 2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.4 3.6h3l1.5 3.8-1.9 1.4a11.5 11.5 0 0 0 5.2 5.2l1.4-1.9 3.8 1.5v3a1.9 1.9 0 0 1-2.1 1.9A15.6 15.6 0 0 1 4.5 5.7a1.9 1.9 0 0 1 1.9-2.1Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h14M13 6.5l5.5 5.5L13 17.5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c0-3 2.5-5.2 5.5-5.2s5.5 2.2 5.5 5.2"/><path d="M16.2 5.2a3.2 3.2 0 0 1 0 5.9M17.6 14.8c1.8.7 3 2.4 3 4.7"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V7M3 12h18v6M21 18v-4.5a2.5 2.5 0 0 0-2.5-2.5H12"/><circle cx="7.2" cy="9.6" r="1.9"/></symbol>
+  <symbol id="i-ruble" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20V4.5h4.8a4.3 4.3 0 0 1 0 8.6H8M6 16.4h7.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5L13.5 3Z"/><path d="M13.3 3.2V9h5.5M8.6 13.5h6.8M8.6 17h4.6"/></symbol>
+</svg>
+
+<header class="hdr stuck">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="img/logo-mark.png" alt="Эмблема «Надежда Есть»" width="56" height="43">
+      <span class="brand-txt">
+        <span class="brand-name">Надежда<em>Есть</em></span>
+        <span class="brand-sub">варианты первого экрана</span>
+      </span>
+    </a>
+    <div class="hdr-act" style="margin-left:auto">
+      <button class="icon-btn" data-act="theme" title="Сменить тему" aria-label="Сменить тему">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 14.2A8.4 8.4 0 0 1 9.8 4 8.6 8.6 0 1 0 20 14.2Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.3 6.3 4.8 4.8M19.2 19.2l-1.5-1.5M17.7 6.3l1.5-1.5M4.8 19.2l1.5-1.5"/></svg>
+      </button>
+      <a class="btn btn-ghost btn-sm" href="index.html">Текущий сайт</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="demo-head">
+    <span class="kicker">Выбор направления</span>
+    <h1 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Три варианта первого экрана</h1>
+    <p class="lede demo-note" style="margin-top:1rem">Все три работают <b>без фотографий</b> — сейчас на сайте справа висит пустая заглушка, и это единственное слабое место главной. Когда снимки дома появятся, они встанут в раздел «Наш дом», а первый экран будет держаться сам. Посмотрите и скажите номер — перенесу выбранный на сайт.</p>
+  </div>
+
+  <!-- ======================= ВАРИАНТ 1 ======================= -->
+  <section class="variant">
+    <div class="variant-bar">
+      <span class="variant-num">1</span>
+      <div>
+        <h2>Пост дежурной смены</h2>
+        <p class="variant-why">Справа вместо фотографии — живая панель дома: время Новосибирска, чем сейчас занята смена, свободные места. Человек, который открыл сайт ночью, сразу видит: там не спят. Самый честный аргумент из всех, что у нас есть, и его невозможно подделать скриншотом конкурента.</p>
+      </div>
+    </div>
+
+    <div class="variant-body">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-badge"><span class="topbar-flag"></span> Дом на ул. Победы&nbsp;— <b>свободные места есть</b><i class="dot"></i></span>
+          <h1>Дом, где вашему близкому <span class="grad-text">спокойно</span>, а вам не страшно</h1>
+          <p class="lede" style="margin-top:1.15rem">Частный пансионат для пожилых людей и людей с инвалидностью в Новосибирске. Круглосуточный уход и наблюдение, восстановление после инсульта и перелома шейки бедра, бережное сопровождение при деменции.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="index.html#zayavka">Записаться на просмотр дома</a>
+            <a class="btn btn-ghost btn-lg" href="tel:+79234411122"><svg width="20" height="20"><use href="#i-phone"/></svg> 8 923 44-111-22</a>
+          </div>
+          <div class="hero-chips">
+            <span class="chip"><svg><use href="#i-check"/></svg> Уход 24/7, ночные обходы</span>
+            <span class="chip"><svg><use href="#i-check"/></svg> Сиделка на 4 подопечных</span>
+            <span class="chip"><svg><use href="#i-check"/></svg> Договор и фиксированная цена</span>
+          </div>
+        </div>
+
+        <aside class="v1-panel">
+          <div class="v1-top">
+            <span class="v1-label"><i></i> Сейчас в доме</span>
+            <span class="v1-clock" data-clock>--:--</span>
+          </div>
+          <div class="v1-act">
+            <b data-act-title>Дежурная смена на месте</b>
+            <span data-act-sub>Новосибирск, время местное</span>
+          </div>
+          <div class="v1-facts">
+            <div><span>Свободных мест</span><b>3 из 20</b></div>
+            <div><span>Сиделка на</span><b>4 подопечных</b></div>
+            <div><span>Визиты родных</span><b>без записи, 9:00–21:00</b></div>
+            <div><span>Заезд</span><b>обычно на следующий день</b></div>
+          </div>
+          <a class="btn btn-primary btn-block" href="tel:+79234411122"><svg width="20" height="20"><use href="#i-phone"/></svg> Позвонить и спросить</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ВАРИАНТ 2 ======================= -->
+  <section class="variant">
+    <div class="variant-bar">
+      <span class="variant-num">2</span>
+      <div>
+        <h2>Витрина услуг</h2>
+        <p class="variant-why">Ближе всего к Госуслугам: крупный заголовок по центру, под ним строка живого статуса и четыре плитки-раздела — «выберите, что вам нужно». Экран получается спокойный и очень понятный, без единой картинки. Минус — меньше эмоции, больше «учреждение».</p>
+      </div>
+    </div>
+
+    <div class="variant-body v2">
+      <span class="kicker">Частный пансионат в Новосибирске</span>
+      <h1>Дом, где вашему близкому <span class="grad-text">спокойно</span>, а вам не страшно</h1>
+      <p class="lede">Круглосуточный уход за пожилыми и лежачими, восстановление после инсульта и травм, сопровождение при деменции. Родные приезжают когда хотят — без записи.</p>
+      <div class="v2-cta">
+        <a class="btn btn-primary btn-lg" href="index.html#zayavka">Записаться на просмотр дома</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+79234411122"><svg width="20" height="20"><use href="#i-phone"/></svg> 8 923 44-111-22</a>
+      </div>
+
+      <div class="v2-status">
+        <span><i class="live"></i> Сейчас в доме <b data-clock>--:--</b></span>
+        <span class="sep"></span>
+        <span><b data-act-title>Дежурная смена на месте</b></span>
+        <span class="sep"></span>
+        <span>Свободных мест: <b>3 из 20</b></span>
+      </div>
+
+      <div class="v2-tiles">
+        <a class="tile" href="index.html#komu"><i><svg><use href="#i-users"/></svg></i><span><b>Кому помогаем</b><span>Лежачие, деменция, инсульт, инвалидность</span></span><svg class="go"><use href="#i-arrow"/></svg></a>
+        <a class="tile" href="index.html#uhod"><i><svg><use href="#i-heart"/></svg></i><span><b>Что входит в уход</b><span>Полный список без скрытых доплат</span></span><svg class="go"><use href="#i-arrow"/></svg></a>
+        <a class="tile" href="index.html#raschet"><i><svg><use href="#i-ruble"/></svg></i><span><b>Стоимость</b><span>От 1 500 ₽ в сутки, расчёт за 10 минут</span></span><svg class="go"><use href="#i-arrow"/></svg></a>
+        <a class="tile" href="index.html#kak"><i><svg><use href="#i-doc"/></svg></i><span><b>Как заехать</b><span>Документы и договор — обычно за один день</span></span><svg class="go"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ВАРИАНТ 3 ======================= -->
+  <section class="variant">
+    <div class="variant-bar">
+      <span class="variant-num">3</span>
+      <div>
+        <h2>Быстрый подбор</h2>
+        <p class="variant-why">Первый экран сразу задаёт единственный вопрос, который важен посетителю: кому нужна помощь. Три нажатия — и человек видит свою цену, ещё не дочитав страницу. Самый «продающий» вариант: он ловит тех, кто пришёл с одним вопросом «сколько это стоит» и обычно уходит, не найдя ответа.</p>
+      </div>
+    </div>
+
+    <div class="variant-body">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-badge"><span class="topbar-flag"></span> Дом на ул. Победы&nbsp;— <b>свободные места есть</b><i class="dot"></i></span>
+          <h1>Дом, где вашему близкому <span class="grad-text">спокойно</span>, а вам не страшно</h1>
+          <p class="lede" style="margin-top:1.15rem">Частный пансионат для пожилых людей и людей с инвалидностью в Новосибирске. Уход 24/7, пятиразовое питание, договор с фиксированной ценой.</p>
+          <div class="hero-chips" style="margin-top:1.8rem">
+            <span class="chip"><svg><use href="#i-check"/></svg> Приезжайте смотреть без записи</span>
+            <span class="chip"><svg><use href="#i-check"/></svg> Заезд обычно на следующий день</span>
+          </div>
+        </div>
+
+        <aside class="v3-card">
+          <h3>Кому нужна помощь?</h3>
+          <p class="small">Ответьте одним нажатием — покажем ориентир по цене. Без формы и звонка.</p>
+
+          <div class="v3-pick">
+            <button class="v3-opt on" data-price="1500" data-note="Присмотр, режим, питание, общение">
+              <i><svg><use href="#i-users"/></svg></i>
+              <span><b>Пожилой человек</b><span>Передвигается сам или с поддержкой</span></span>
+            </button>
+            <button class="v3-opt" data-price="2000" data-note="Противопролежневый уход, кормление, ЛФК">
+              <i><svg><use href="#i-bed"/></svg></i>
+              <span><b>Лежачий, после инсульта или травмы</b><span>Нужен усиленный уход</span></span>
+            </button>
+            <button class="v3-opt" data-price="2500" data-note="Усиленное наблюдение днём и ночью">
+              <i><svg><use href="#i-heart"/></svg></i>
+              <span><b>Деменция или тяжёлое состояние</b><span>Нужна безопасная среда</span></span>
+            </button>
+          </div>
+
+          <div class="v3-out">
+            <span>Ориентир</span>
+            <b>от <span data-price-out>1 500</span> ₽ <small>/ сутки</small></b>
+          </div>
+          <p class="small" style="margin:-.4rem 0 1.1rem" data-note-out>Присмотр, режим, питание, общение</p>
+
+          <a class="btn btn-primary btn-block" href="index.html#raschet">Рассчитать точнее</a>
+          <p class="small" style="text-align:center;margin-top:.8rem">Или позвоните: <a class="tel-link" style="color:var(--blue)" href="tel:+79234411122">8 923 44-111-22</a></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ВАРИАНТ 4 ======================= -->
+  <section class="variant">
+    <div class="variant-bar">
+      <span class="variant-num">4</span>
+      <div>
+        <h2>Открытая дверь</h2>
+        <p class="variant-why">На случай, если фотографии дома выйдут хорошими. Заголовок во всю ширину, под ним полоса из трёх кадров — фасад, комната, двор. Один слабый снимок такую полосу не рушит, в отличие от нынешнего экрана, который держится на единственной большой фотографии. Пока снимков нет, на их месте честные заглушки.</p>
+      </div>
+    </div>
+
+    <div class="variant-body">
+      <div style="max-width:780px">
+        <span class="hero-badge"><span class="topbar-flag"></span> Дом на ул. Победы&nbsp;— <b>свободные места есть</b><i class="dot"></i></span>
+        <h1>Дом, где вашему близкому <span class="grad-text">спокойно</span>, а вам не страшно</h1>
+        <p class="lede" style="margin-top:1.15rem">Частный пансионат для пожилых людей и людей с инвалидностью в Новосибирске. Приезжайте смотреть без записи — в любой день с 9:00 до 20:00.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="index.html#zayavka">Записаться на просмотр дома</a>
+          <a class="btn btn-ghost btn-lg" href="tel:+79234411122"><svg width="20" height="20"><use href="#i-phone"/></svg> 8 923 44-111-22</a>
+        </div>
+      </div>
+
+      <div class="v4-strip">
+        <figure class="v4-shot"><div class="shot-ph"><svg><use href="#i-clock"/></svg><span>img/hero-dom.jpg</span></div><figcaption>Дом на ул. Победы</figcaption></figure>
+        <figure class="v4-shot"><div class="shot-ph"><svg><use href="#i-bed"/></svg><span>img/gal-1.jpg</span></div><figcaption>Комнаты</figcaption></figure>
+        <figure class="v4-shot"><div class="shot-ph"><svg><use href="#i-heart"/></svg><span>img/gal-4.jpg</span></div><figcaption>Двор и прогулки</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ВАРИАНТ 5 ======================= -->
+  <section class="variant">
+    <div class="variant-bar">
+      <span class="variant-num">5</span>
+      <div>
+        <h2>Ответ на звонок</h2>
+        <p class="variant-why">Форма заявки прямо на первом экране: три поля и кнопка. Сейчас форма живёт в самом низу — до неё доходит меньшинство. Здесь человек оставляет телефон, не прокручивая ни пикселя. Рядом честная строка о том, когда именно перезвонят, — она снимает страх «сейчас начнут названивать».</p>
+      </div>
+    </div>
+
+    <div class="variant-body">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-badge"><span class="topbar-flag"></span> Дом на ул. Победы&nbsp;— <b>свободные места есть</b><i class="dot"></i></span>
+          <h1>Дом, где вашему близкому <span class="grad-text">спокойно</span>, а вам не страшно</h1>
+          <p class="lede" style="margin-top:1.15rem">Круглосуточный уход за пожилыми и лежачими, восстановление после инсульта и травм, сопровождение при деменции. Расскажите о ситуации — честно скажем, сможем ли помочь.</p>
+          <div class="hero-chips">
+            <span class="chip"><svg><use href="#i-check"/></svg> Уход 24/7, ночные обходы</span>
+            <span class="chip"><svg><use href="#i-check"/></svg> Пятиразовое питание</span>
+            <span class="chip"><svg><use href="#i-check"/></svg> Договор и фиксированная цена</span>
+          </div>
+        </div>
+
+        <aside class="v5-form">
+          <h3>Бесплатная консультация</h3>
+          <p class="small">Ответим на вопросы и подберём формат ухода. Ни к чему вас не обязывает.</p>
+
+          <div class="v5-when"><i></i> Сейчас <b data-clock>--:--</b> — дежурная смена на связи, перезвоним в течение 15 минут</div>
+
+          <div class="field">
+            <label for="v5-name">Как к вам обращаться</label>
+            <input type="text" id="v5-name" placeholder="Ваше имя">
+          </div>
+          <div class="field">
+            <label for="v5-tel">Телефон</label>
+            <input type="tel" id="v5-tel" placeholder="+7 (___) ___-__-__">
+          </div>
+          <div class="field">
+            <label for="v5-care">Кому нужна помощь</label>
+            <select id="v5-care">
+              <option>Пожилой человек</option>
+              <option>Лежачий больной</option>
+              <option>После инсульта</option>
+              <option>Деменция</option>
+              <option>Человек с инвалидностью</option>
+            </select>
+          </div>
+          <a class="btn btn-primary btn-block btn-lg" href="index.html#zayavka">Получить консультацию</a>
+          <p class="small" style="text-align:center;margin-top:.8rem">Или позвоните: <a class="tel-link" style="color:var(--blue)" href="tel:+79234411122">8 923 44-111-22</a></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ВАРИАНТ 6 ======================= -->
+  <section class="variant">
+    <div class="variant-bar">
+      <span class="variant-num">6</span>
+      <div>
+        <h2>Маршрут заезда</h2>
+        <p class="variant-why">Первый экран показывает весь путь целиком: звонок, приезд, договор, заезд — и подпись, что обычно это один день. Бьёт по страху «это долго, сложно и надо собирать сто справок». Подходит, если по звонкам вы слышите именно этот вопрос чаще других.</p>
+      </div>
+    </div>
+
+    <div class="variant-body">
+      <div style="max-width:800px">
+        <span class="hero-badge"><span class="topbar-flag"></span> Дом на ул. Победы&nbsp;— <b>свободные места есть</b><i class="dot"></i></span>
+        <h1>От звонка до заезда — <span class="grad-text">один день</span>, без очередей и направлений</h1>
+        <p class="lede" style="margin-top:1.15rem">Частный пансионат для пожилых людей и людей с инвалидностью в Новосибирске. Круглосуточный уход, пятиразовое питание, договор с фиксированной ценой.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="index.html#zayavka">Записаться на просмотр дома</a>
+          <a class="btn btn-ghost btn-lg" href="tel:+79234411122"><svg width="20" height="20"><use href="#i-phone"/></svg> 8 923 44-111-22</a>
+        </div>
+      </div>
+
+      <div class="v6-route">
+        <div class="v6-step is-now"><em>сейчас</em><b>Звонок</b><span>10 минут: спросим о состоянии и честно скажем, сможем ли помочь</span></div>
+        <div class="v6-step"><b>Приезд</b><span>Без записи, любой день с 9:00 до 20:00. Покажем комнаты и кухню</span></div>
+        <div class="v6-step"><b>Договор</b><span>Фиксированная цена, второй экземпляр остаётся у вас</span></div>
+        <div class="v6-step"><b>Заезд</b><span>Встречаем, знакомим с персоналом, первую неделю звоним каждый день</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="variant">
+    <div class="variant-bar">
+      <span class="variant-num" style="background:var(--red)">?</span>
+      <div>
+        <h2>Что дальше</h2>
+        <p class="variant-why">Напишите номер — перенесу выбранный вариант на главную вместе со всеми состояниями: тёмная тема, крупный шрифт, мобильная вёрстка. Варианты можно смешивать: например, панель дежурной смены из первого плюс маршрут заезда из шестого под ней. Текущий экран с местом под большую фотографию тоже остаётся рабочим вариантом, если снимки дома выйдут хорошими.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" style="margin-top:2rem">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border:0;padding-top:0">
+      <span>Служебная страница сравнения. На боевом сайте её не будет.</span>
+      <span><a href="index.html">Вернуться на сайт</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  try { if (localStorage.getItem('ne-theme')) root.setAttribute('data-theme', localStorage.getItem('ne-theme')); } catch (e) {}
+  document.querySelector('[data-act="theme"]').addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('ne-theme', next); } catch (e) {}
+  });
+
+  // живые часы и текущий пункт распорядка — те же, что на сайте
+  var schedule = [
+    { at: '07:30', title: 'Подъём и утренняя гигиена', sub: 'Помогаем умыться и одеться' },
+    { at: '08:30', title: 'Завтрак и лекарства', sub: 'Приём препаратов под контролем' },
+    { at: '10:00', title: 'Зарядка, ЛФК, прогулка', sub: 'Кто может — во дворе' },
+    { at: '13:00', title: 'Обед', sub: 'Готовим на своей кухне' },
+    { at: '14:00', title: 'Тихий час', sub: 'Отдых, смена положения тела' },
+    { at: '16:00', title: 'Полдник и звонки родным', sub: 'Поможем набрать номер' },
+    { at: '18:30', title: 'Ужин', sub: 'Вечерние лекарства по назначению' },
+    { at: '20:00', title: 'Вечерние процедуры', sub: 'Гигиена, измерения, подготовка ко сну' },
+    { at: '21:30', title: 'Ночной обход', sub: 'Дежурная смена не спит: обход каждые 2 часа' }
+  ];
+  function tick() {
+    var h, m;
+    try {
+      var parts = new Intl.DateTimeFormat('ru-RU', { timeZone: 'Asia/Novosibirsk', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+      parts.forEach(function (p) { if (p.type === 'hour') h = +p.value; if (p.type === 'minute') m = +p.value; });
+    } catch (e) { var d = new Date(); h = d.getHours(); m = d.getMinutes(); }
+    var mins = h * 60 + m, idx = schedule.length - 1;
+    schedule.forEach(function (p, i) {
+      var t = p.at.split(':');
+      if (mins >= +t[0] * 60 + +t[1]) idx = i;
+    });
+    var cur = schedule[idx];
+    document.querySelectorAll('[data-clock]').forEach(function (el) {
+      el.textContent = (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+    });
+    document.querySelectorAll('[data-act-title]').forEach(function (el) { el.textContent = cur.title; });
+    document.querySelectorAll('[data-act-sub]').forEach(function (el) { el.textContent = cur.sub; });
+  }
+  tick();
+  setInterval(tick, 20000);
+
+  // быстрый подбор в третьем варианте
+  var opts = document.querySelectorAll('.v3-opt');
+  opts.forEach(function (b) {
+    b.addEventListener('click', function () {
+      opts.forEach(function (o) { o.classList.remove('on'); });
+      b.classList.add('on');
+      document.querySelector('[data-price-out]').textContent =
+        String(b.getAttribute('data-price')).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+      document.querySelector('[data-note-out]').textContent = b.getAttribute('data-note');
+    });
+  });
+})();
+</script>
+</body>
+</html>
