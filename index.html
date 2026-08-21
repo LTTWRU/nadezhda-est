@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=33">
+<link rel="stylesheet" href="css/style.css?v=34">
 <noscript><style>.rv{opacity:1!important;transform:none!important}.shot-ph{display:none}</style></noscript>
 </head>
 <body>
@@ -703,7 +703,7 @@
           <li>Степень подвижности и объём ежедневного ухода</li>
           <li>Специальное питание и расходные материалы</li>
           <li>Необходимость индивидуального поста наблюдения</li>
-          <li>Срок проживания: от 3 месяцев — фиксируем цену со скидкой</li>
+          <li>Срок проживания: до месяца дороже на 100 ₽, от 4 месяцев — дешевле на 100 ₽</li>
         </ul>
       </div>
       <div class="price-why rv rv-d1" style="display:flex;flex-direction:column;justify-content:center;gap:.9rem">
@@ -741,9 +741,9 @@
         <fieldset class="calc-group" style="border:0;padding:0;margin-inline:0">
           <span class="lbl"><i>3</i> На какой срок</span>
           <div class="calc-opts cols3">
-            <label class="calc-opt"><input type="radio" name="term" value="0" checked><b>До месяца</b><span>от 7 суток</span></label>
-            <label class="calc-opt"><input type="radio" name="term" value="-100"><b>От 1 месяца</b><span>−100 ₽</span></label>
-            <label class="calc-opt"><input type="radio" name="term" value="-200"><b>От 3 месяцев</b><span>−200 ₽</span></label>
+            <label class="calc-opt"><input type="radio" name="term" value="100"><b>До месяца</b><span>+100 ₽ к тарифу</span></label>
+            <label class="calc-opt"><input type="radio" name="term" value="0" checked><b>От 1 месяца</b><span>цена по тарифу</span></label>
+            <label class="calc-opt"><input type="radio" name="term" value="-100"><b>От 4 месяцев</b><span>−100 ₽ от тарифа</span></label>
           </div>
         </fieldset>
       </form>
@@ -1052,7 +1052,7 @@
   "areaServed": "Новосибирск и Новосибирская область"
 }
 </script>
-<script src="js/app.js?v=33" defer></script>
+<script src="js/app.js?v=34" defer></script>
 
 <script>
 document.addEventListener('submit', function (e) {
