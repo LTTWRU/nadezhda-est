@@ -371,7 +371,7 @@
 
     var recalc = function () {
       var sum = 0, key = 'base';
-      ['care', 'room', 'term'].forEach(function (name) {
+      ['care', 'term'].forEach(function (name) {
         var el = calc.querySelector('input[name="' + name + '"]:checked');
         if (!el) return;
         sum += parseInt(el.value, 10);
